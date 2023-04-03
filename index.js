@@ -41,47 +41,30 @@ function displayMovies(movieObj) {
         </div>
     </li>
     `
-//      const titleLink = card.querySelector('title');
-//      titleLink.addEventListener('click', function(event){
-//          event.preventDefault();
-//       console.log(movieObj.description);
-//  })
-
     
     return nowPlayingUl.innerHTML += card;
 }
 
+//const myStuff = document.querySelector('.my-button')
+//myStuff.addEventListener('click', handleEvent)
 
+function handleEvent (event){
+    const target = event.target;
+    const tickets = parseInt(target.getAttribute('movieObj.tickets'));
+    const capacity = parseInt(target.getAttribute('movieObj.capacity'));
 
+    if(tickets<capacity){
+        target.setAttribute('data-tickets', tickets + 1);
+        target.innerHTML = `Buy Ticket: ${capacity - (tickets + 1)}`;
+     } else {
+        console.log('Sold Out')
+     }
+}
+
+nowPlayingUl.addEventListener('click', handleEvent);
 showMovies()
 
 
 
 
-
-// const showContent = document.getElementById('my-content')
-// showContent.addEventListener('click', displayContent)
-
-
-// function displayContent(movieObj){
-//     let HTMLTemplate = `<li class="col-md-3">
-//     <div class="card my-4" style="width: 300px;">
-//       <div class="card-body">
-//       <p class="card-text">${movieObj.description}</p>
-//       </div>
-//       </div>
-//   </li>
-//   `
-//     return showContent.innerHTML += HTMLTemplate;
-// }
-
-// nowPlayingUl.addEventListener('click', displayContent);
-
-// function displayContent(event){
-//     let clickedMovie = event.target.closest('.card')
-//     let moviePoster = clickedMovie.querySelector('.card-img-top').getAttribute('src')
-//     let movieRunTime = clickedMovie.querySelector('.runtime').textContent;
-//     let details = `${moviePoster} + ${movieRunTime}`
-//     console.log(details);
-// }
 
