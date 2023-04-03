@@ -13,7 +13,10 @@ function showMovies() {
                     runtime: movie.runtime,
                     showtime: movie.showtime,
                     poster: movie.poster,
-                    description: movie.description
+                    runtime:movie.runtime,
+                    showtime : movie.showtime,
+                    tickets : movie.tickets_sold,
+                    capacity : movie.capacity
                 }
                 return movieObj
             })
@@ -21,20 +24,56 @@ function showMovies() {
             moviesArr.map(movie => displayMovies(movie))
         })
 }
-
+        
 function displayMovies(movieObj) {
-    let HTMLTemplate = `<li class="col-md-3">
+    let card = `<li class="col-md-3">
       <div class="card my-4" style="width: 300px;">
          <img src="${movieObj.poster}" class="card-img-top" alt="${movieObj.title}">
         <div class="card-body">
         <medium class="card-title"><a class="title" href="#">${movieObj.title}</a></medium>
-        <p class="card-text"></p>
+        <medium class="card-title"><p>Run Time :${movieObj.runtime}</p>
+        <medium class="card-title"><p>Show Time :${movieObj.showtime}</p>
+        <medium class="card-title"><p>Run Time :${movieObj.runtime}</p>
+        <medium class="card-title"><p>Tickets Sold :${movieObj.tickets}</p>
+        <button class="my-button">Buy Ticket: ${movieObj.capacity}</button>
+
         </div>
         </div>
     </li>
     `
-    return nowPlayingUl.innerHTML += HTMLTemplate;
+//      const titleLink = card.querySelector('title');
+//      titleLink.addEventListener('click', function(event){
+//          event.preventDefault();
+//       console.log(movieObj.description);
+//  })
+
+    
+    return nowPlayingUl.innerHTML += card;
 }
+
+
+
+showMovies()
+
+
+
+
+
+// const showContent = document.getElementById('my-content')
+// showContent.addEventListener('click', displayContent)
+
+
+// function displayContent(movieObj){
+//     let HTMLTemplate = `<li class="col-md-3">
+//     <div class="card my-4" style="width: 300px;">
+//       <div class="card-body">
+//       <p class="card-text">${movieObj.description}</p>
+//       </div>
+//       </div>
+//   </li>
+//   `
+//     return showContent.innerHTML += HTMLTemplate;
+// }
 
 // nowPlayingUl.addEventListener('click', displayContent);
 
@@ -46,4 +85,3 @@ function displayMovies(movieObj) {
 //     console.log(details);
 // }
 
-showMovies()
